@@ -1,0 +1,29 @@
+<button id="plusButton" onclick="document.getElementById('slideUpDiv').style.display = 'block'" >+</button>
+<div id="slideUpDiv" style="display: none;">
+    <%= form_for :todo, url: create_path, :html => { :id => "todo"} do |form| %>
+       <% if @todo.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@todo.errors.count, "error") %> prohibited
+            this article from being saved:
+          </h2>
+          <ul>
+            <% @todo.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <p>
+        <%= form.label ("text"), "Задача:" %><br>
+        <%= form.text_field ("text") %>
+      </p>
+      <p>
+       <p>
+           <%= form.select( "project_id", Project.all.collect { |p| [ p.title, p.id ] }) %>
+       </p>
+        <a href="#" onclick="document.getElementById('todo').submit()" >OK</a>
+      </p>
+        <a href="#" id="cancelButton" onclick="document.getElementById('slideUpDiv').style.display = 'none'">ОТМЕНА</a>
+    <% end %>
+</div>

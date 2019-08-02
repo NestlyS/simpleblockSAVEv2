@@ -1,0 +1,13 @@
+<div id='todo-form'>
+  <%= form_for :todo, url: project_todos_path do |form| %>
+    <p>
+      <%= form.label :project_id %>
+      <%= form.collection_select :project_id, Project.all, :id, :title %>
+    </p>
+    <p>
+      <%= form.label :text %>
+      <%= form.text_field :text %>
+      <%= form.select_tag(:id, options_from_collection_for_select(Project.all, "title")) %>
+    </p>
+  <% end %>
+</div>

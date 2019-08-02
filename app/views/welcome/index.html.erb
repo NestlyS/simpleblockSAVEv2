@@ -1,0 +1,13 @@
+<h1 align="center">Задачи</h1>
+<%= render 'todos/test_todo_form'%>
+
+<% @projects.each do |project| %>
+    <h2 align="center"><%= project.title%></h2>
+    <% project.todos.each do |todo| %>
+       <ul>
+           <li align="center" , style="list-style: none; padding-right:40px; text-align:"justify"">
+                <%= todo.text%>
+           </li>
+       </ul>
+    <%end%>
+<%end%>
