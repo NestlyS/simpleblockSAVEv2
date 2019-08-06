@@ -4,14 +4,14 @@
        <div id="label">
         <%= form.label ("text"), "Новая задача", class:'label' %><br>
        </div>
-        <%= form.text_field ("text"), placeholder: "Название задачи", class: 'form-control' %>
+        <%= form.text_field ("text"), placeholder: "Название задачи"%>
       </p>
        <p>
-          
-           <%= select_tag 'todo[project_id]', options_for_select(Project.all.collect{ |u| [u.title, u.id] }), class: 'form-control'%>
+
+           <%= select_tag 'todo[project_id]', options_for_select(Project.all.collect{ |u| [u.title, u.id] })%>
        </p>
        <div id="buttons">
-        <button type="button" class="btn btn-secondary gray" id="cancelButton" onclick="document.getElementById('cn').style.display = 'none'">ОТМЕНА</button>
-        <button type="button" class="btn btn-primary blue" onclick="document.getElementById('todo').submit()" >OK</button>
+        <button type="button" id="cancelButton" onclick="document.getElementById('cn').style.display = 'none'">ОТМЕНА</button>
+        <button type="button" blue" onclick="document.getElementById('todo').submit()" >OK</button>
        </div>
     <% end %>
