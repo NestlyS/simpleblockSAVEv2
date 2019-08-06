@@ -10,6 +10,39 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery2
+//= require jquery3
+//= require select2
+//= require 'icheck'
 //= require rails-ujs
 //= require_tree .
 
+function icheck(){
+  if($(".icheck-me").length > 0){
+    $(".icheck-me").each(function(){
+      var $el = $(this);
+      var skin = ($el.attr('data-skin') !== undefined) ? "_" + $el.attr('data-skin') : "",
+      color = ($el.attr('data-color') !== undefined) ? "-" + $el.attr('data-color') : "";
+      var opt = {
+        checkboxClass: 'icheckbox' + skin + color,
+        radioClass: 'iradio' + skin + color,
+      }
+      $el.iCheck(opt);
+    });
+  }
+}
+
+
+function checkboxChangeValue(object, sub){
+  
+  document.getElementById('edit_todo_'+sub).submit()
+}
+
+$(function(){
+  icheck();
+})
+
+$( "#dropdown" ).select2({
+    theme: "bootstrap"
+});

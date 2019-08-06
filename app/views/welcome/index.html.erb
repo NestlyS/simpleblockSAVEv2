@@ -1,13 +1,37 @@
-<h1 align="center">Задачи</h1>
-<%= render 'todos/test_todo_form'%>
+<div id="cn">
+            <%= render 'todos/test_todo_form'%>
+</div>
+<div id="all" class="container">
+   <div  id="tasks-header">
+    <div class="row row-plus">
+        <div class="col-10"><h1>Задачи</h1></div>
+        <div class="col-2"><a href='#' id="plusButton", onclick= "document.getElementById('cn').style.display = 'flex'">+</a>
+        </div>
+    </div>
+    </div>
 
-<% @projects.each do |project| %>
-    <h2 align="center"><%= project.title%></h2>
-    <% project.todos.each do |todo| %>
-       <ul>
-           <li align="center" , style="list-style: none; padding-right:40px; text-align:"justify"">
-                <%= todo.text%>
-           </li>
-       </ul>
-    <%end%>
-<%end%>
+
+
+    <div class="row">
+     <% @projects.each do |project| %>
+            <div class="col-lg-4 col-md-6 col-12">
+               <div class="full-card">
+                    <h2 align="center"><%= project.title%></h2>
+                        <div class="tasks">
+                        <% project.todos.each do |todo| %>
+                           <ul>
+                               <li style="list-style: none;" >
+                                   <%= form_for project.todos.find(todo.id) do |form| %>
+                                        <%= form.check_box("isCompleted", {:id => "#{project.id}-#{todo.id}",:class =>"hidden-box", checked: (todo.isCompleted and todo.isCompleted != nil)} , 'false', 'true' ) %>
+                                        <label class="test" for="<%= project.id%>-<%= todo.id%>" onclick="checkboxChangeValue('<%= project.id%>-<%= todo.id%>' ,'<%= todo.id%>' )"></label>
+                                        <label class="text" for="<%= project.id%>-<%= todo.id%>" onclick="checkboxChangeValue('<%= project.id%>-<%= todo.id%>' ,'<%= todo.id%>')"><%= todo.text%></label>
+                                    <%end%>
+                               </li>
+                           </ul>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    </div>
+</div>

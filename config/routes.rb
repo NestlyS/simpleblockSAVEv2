@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-    
+
   get 'welcome/index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  post 'create' => 'todos#create'
+  patch 'welcome/index' => 'todos#update'
     resources :projects do
-        resources :todos
+        resources :todos, shallow: true
     end
-    post 'create' => 'todos#create'
+
     root 'welcome#index'
 end

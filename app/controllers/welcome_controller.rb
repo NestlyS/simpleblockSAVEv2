@@ -4,8 +4,12 @@ class WelcomeController < ApplicationController
       @todo = Todo.new
   end
   def new
-      
+
   end
   def update
-  end
+    end
+    private
+        def todo_params
+            params.require(:edit_todo_).permit(:isChecked)
+        end
 end
