@@ -12,3 +12,15 @@
 //
 //= require rails-ujs
 //= require_tree .
+function submitToDo(){
+  document.getElementById('todo').submit();
+}
+function changeDisplayToNone(object)
+{
+  document.getElementById(object).style.display = 'none';
+}
+
+function changeDisplayToFlex(object)
+{
+  document.getElementById(object).style.display = 'flex';
+}
